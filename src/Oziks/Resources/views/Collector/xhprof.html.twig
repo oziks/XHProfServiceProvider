@@ -10,16 +10,22 @@
     {% set text %}
         <div class="sf-toolbar-info-piece">
             <b>Current report</b>
-            <span><a href="{{ collector.report.report }}">{{ collector.report.runId }}</a></span>
+            {% if collector.report.runId != "" %}
+            <span><a href="{{ collector.report.report }}" target="_blank">{{ collector.report.runId }}</a></span>
+            {% else %}
+            <span>none</span>
+            {% endif %}
         </div>
+        {% if collector.reports|length %}
         <div class="sf-toolbar-info-piece">
             <b>Last reports</b>
             <ul onchange="document.href=http://google.fr">
             {% for report in collector.reports %}
-                <li><a href="{{ report.report }}">{{ report.runId }}</a></li>
+                <li><a href="{{ report.report }}" target="_blank">{{ report.runId }}</a></li>
             {% endfor %}
             </ul>
         </div>
+        {% endif %}
     {% endset %}
     {% include '@WebProfiler/Profiler/toolbar_item.html.twig' with { 'link': false } %}
 {% endblock %}

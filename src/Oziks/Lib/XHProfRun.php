@@ -60,6 +60,8 @@ class XHProfRun
 
     /**
      * Triggers the end of the run
+     *
+     * @return boolean True if the run is started before call end method
      */
     public function end()
     {
@@ -74,9 +76,8 @@ class XHProfRun
             $xhprof_runs = new XHProfRuns_Default(ini_get("xhprof.output_dir"));
             $this->id = $xhprof_runs->save_run($this->data, $this->namespace);
         }
-        else {
-            throw new Exception("This run has not been started.", 1);
-        }
+
+        return $this->started;
     }
 
     /**
@@ -104,7 +105,6 @@ class XHProfRun
         $dir = ini_get("xhprof.output_dir");
 
         if (is_dir($dir)) {
-
             $finder = new Finder();
             $finder
                 ->files()

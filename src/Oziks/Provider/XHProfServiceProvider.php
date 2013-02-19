@@ -25,6 +25,10 @@ class XHProfServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
+        if (!extension_loaded('xhprof')) {
+            throw new Exception("XHProf extension is not loaded.", 1);
+        }
+
         if (!isset($app['xhprof.location'])) {
             throw new Exception("xhprof.location is required.", 1);
         }
