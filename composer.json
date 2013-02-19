@@ -1,0 +1,25 @@
+{
+    "name": "oziks/xhprof-service-provider",
+    "type": "library",
+    "description": "XHProf service provider for Silex.",
+    "keywords": ["silex", "debug", "toolbar", "xhprof"],
+    "homepage": "https://github.com/oziks/XHProfServiceProvider",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Morgan Brunot",
+            "email": "brunot.morgan@gmail.com",
+            "homepage": "http://oziks.fr"
+        }
+    ],
+    "require": {
+        "silex/web-profiler": "~1.0@dev",
+        "symfony/finder": "2.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Oziks": "src"
+        }
+    },
+    "minimum-stability": "dev"
+}

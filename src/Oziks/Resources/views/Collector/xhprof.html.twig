@@ -1,0 +1,25 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        <span>
+            <img width="13" height="28" alt="Memory Usage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB90CEw4VOE8xfcAAAAIcSURBVEjH7VbBjtMwEH1jJ9mqAQnRnqretiBui+h+Fze+A/ErsFX5E4SUnir1gMStqZQ2nuGQTGo3absiy2mJFNkZOfM8855fAvy/nu01ezOjv3mP+oDezm5/WWtf67Nz7vMqW3269E7UB3A8HpvhcGhFBACw2+3MKlvhnwFaaxHHMRQwstfT9QIUETBzA8jCyq9YayEi1c3yLsuyn70BFUwBdRyNRhgMBgCAsixRFAU/aYWncyKCMaY17w/IYUuFj6NjB0jVBXb8NIAsx5aKCARHLhtwL94CnE6nxhjzymsZrdfr35c4dM41FTrnmrhWrms6AZOb5K219och4yegSxz6otFCfD6ZGV6BIWCapi5JElhrQSAU++KqSnX3ItIcC62wmcsZDoMd01Hmj63QV6x/a7wFqDsjqrro2F2tMDj4dWLHrsVnt0qlljrVoPW6yWTyhQx99I7DdrPZvDw9Fg1XDN9lznPIUvWbhAJO0hdpqc4BAEVRFM16/+Arh15ccz6qpb5z+OPp+i5lds07RaOARBSoTltERIF3donGN4Sg5S1ADtWlHEIQgngW5u/e5zBQLJ8DhARVqiUJQmP248HXoiN+0dryPEcURbDWAgAO+0MV3+Y43JRQCmvNIM9zlGVZVwLsNb7NESdx41a6pgW4WD4ARI2XCQTzu3ssvj8EghERzN/fY7Hsjn9bfoVmkcob6cPd/Jn8Xv4BaqE/+Mh79FUAAAAASUVORK5CYII=">
+            <span>XHProf</span>
+        </span>
+    {% endset %}
+    {% set text %}
+        <div class="sf-toolbar-info-piece">
+            <b>Current report</b>
+            <span><a href="{{ collector.report.report }}">{{ collector.report.runId }}</a></span>
+        </div>
+        <div class="sf-toolbar-info-piece">
+            <b>Last reports</b>
+            <ul onchange="document.href=http://google.fr">
+            {% for report in collector.reports %}
+                <li><a href="{{ report.report }}">{{ report.runId }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% endset %}
+    {% include '@WebProfiler/Profiler/toolbar_item.html.twig' with { 'link': false } %}
+{% endblock %}
