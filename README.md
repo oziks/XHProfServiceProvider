@@ -13,6 +13,14 @@ Parameters
 Registering
 -----------
 
+To enable it, add this dependency to your `composer.json` file:
+
+```js
+"oziks/xhprof-service-provider": "dev-master"
+```
+
+And enable it in your application:
+
 ``` php
 <?php
 
