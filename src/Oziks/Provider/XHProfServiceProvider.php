@@ -44,6 +44,8 @@ class XHProfServiceProvider implements ServiceProviderInterface
             );
         });
 
+        $app['twig.path'] = array_merge($app['twig.path'], array(__DIR__.'/../Resources/views/'));
+
         $app['data_collector.templates'] = array_merge($app['data_collector.templates'], array(array('xhprof', 'Collector/xhprof.html.twig')));
         $app['data_collectors'] = array_merge($app['data_collectors'], array('xhprof' => $app->share(function ($app) { return new XHProfDataCollector($app['xhprof']); })));
     }
